@@ -30,21 +30,23 @@ Admin and Tenant web UI for managing Neivan API Gateway tenants, API sets, route
 - Protected pages use `AuthGate` (`src/shared/lib/AuthGate.tsx`).
 - Most create/edit/delete actions open as **intercepting route modals** over the dashboard.
 
+> **Note:** Mermaid node labels must not use `[/text/]` syntax (that denotes a trapezoid shape). Routes appear in the tables below; diagrams use plain descriptive labels for GitHub compatibility.
+
 ```mermaid
 flowchart LR
   subgraph Admin
-    AL[/admin/login] --> AD[/admin/dashboard]
+    AL["Admin login"] --> AD["Admin dashboard"]
     AD --> AT[Tenants]
-    AD --> AS[API sets]
-    AD --> AU[Admin users]
+    AD --> AS["API sets"]
+    AD --> AU["Admin users"]
   end
   subgraph Tenant
-    TL[/tenant/login] --> TD[/tenant/dashboard]
-    TD --> TAS[Assigned API sets]
+    TL["Tenant login"] --> TD["Tenant dashboard"]
+    TD --> TAS["Assigned API sets"]
     TD --> TT[Tokens]
     TD --> TU[Usage]
-    TD --> TIP[IP whitelist]
-    TD --> QT[Quick token]
+    TD --> TIP["IP whitelist"]
+    TD --> QT["Quick token"]
   end
 ```
 
@@ -116,11 +118,11 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-  A[Open /admin/login] --> B[Enter username + password]
+  A["Open admin login"] --> B["Enter username and password"]
   B --> C{Valid credentials?}
-  C -->|Yes| D[Store admin JWT]
-  D --> E[/admin/dashboard]
-  C -->|No| F[Show error]
+  C -->|Yes| D["Store admin JWT"]
+  D --> E["Admin dashboard"]
+  C -->|No| F["Show error"]
   F --> B
 ```
 
@@ -138,13 +140,13 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[/admin/dashboard] --> B[Admin users]
+  A["Admin dashboard"] --> B["Admin users page"]
   B --> C{Action}
-  C -->|Create| D[/admin/admins/create modal]
-  D --> E[Fill form → Save]
+  C -->|Create| D["Create admin modal"]
+  D --> E["Fill form and save"]
   E --> B
-  C -->|Edit| F[/admin/admins/id/edit modal]
-  F --> G[Update → Save]
+  C -->|Edit| F["Edit admin modal"]
+  F --> G["Update and save"]
   G --> B
 ```
 
@@ -164,17 +166,17 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[/admin/dashboard] --> B[Tenants table]
+  A["Admin dashboard"] --> B["Tenants table"]
   B --> C{Action}
-  C -->|Create| D[tenants-create modal]
-  D --> E[name, slug, password?]
-  E --> F[POST tenant]
+  C -->|Create| D["Create tenant modal"]
+  D --> E["Name, slug, optional password"]
+  E --> F["POST tenant"]
   F --> B
-  C -->|View| G[tenants/id/view modal]
-  G --> H[Tokens / Usage / IP whitelist]
-  C -->|Edit| I[tenants/id/edit modal]
-  C -->|Delete| J[tenants/id/delete modal]
-  J --> K[Confirm delete]
+  C -->|View| G["Tenant view modal"]
+  G --> H["Tokens, usage, IP whitelist"]
+  C -->|Edit| I["Edit tenant modal"]
+  C -->|Delete| J["Delete tenant modal"]
+  J --> K["Confirm delete"]
   K --> B
 ```
 
@@ -189,16 +191,16 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[Tenant View modal] --> B{Sub-feature}
-  B -->|Tokens| C[tokens-create]
-  C --> D[Scope + optional API sets]
-  D --> E[Show API key once]
-  B -->|Usage| F[Filter 24h / 7d]
-  B -->|Usage policy| G[usage-policy modal]
-  G --> H[Pick API set or route]
-  H --> I[Set RPM / RPH / RPD / bandwidth]
-  B -->|IP whitelist| J[Add CIDR or IP]
-  J --> K[TENANT_GLOBAL or API_SET scope]
+  A["Tenant view modal"] --> B{Sub-feature}
+  B -->|Tokens| C["Create token"]
+  C --> D["Scope and optional API sets"]
+  D --> E["Show API key once"]
+  B -->|Usage| F["Filter 24h or 7d"]
+  B -->|Usage policy| G["Usage policy modal"]
+  G --> H["Pick API set or route"]
+  H --> I["Set rate limits"]
+  B -->|IP whitelist| J["Add CIDR or IP"]
+  J --> K["Tenant global or API set scope"]
 ```
 
 ---
@@ -221,26 +223,26 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[/admin/dashboard] --> B[API sets table]
+  A["Admin dashboard"] --> B["API sets table"]
   B --> C{Action}
-  C -->|Create| D[api-sets/create modal]
-  D --> E[name, description, replay?]
-  E --> F[Optional Postman import]
+  C -->|Create| D["Create API set modal"]
+  D --> E["Name, description, replay flag"]
+  E --> F["Optional Postman import"]
   F --> B
-  C -->|View| G[api-sets/id/view modal]
+  C -->|View| G["API set view modal"]
   G --> R[Requirements]
-  G --> RT[Routes table]
-  G --> U[Usage analytics]
-  C -->|Add route| H[add-route modal]
-  H --> I[POST single route]
-  C -->|Assign| J[assign-tenant modal]
-  J --> K[Select tenants → POST assign]
-  C -->|Replay secret| L[replay-secret modal]
-  L --> M[tenant + raw secret → upsert]
-  C -->|Postman import| N[import-from-postman]
-  N --> O[Preview → select → bulk import]
-  RT --> P[routes/routeId/docs]
-  P --> Q[Edit documentation]
+  G --> RT["Routes table"]
+  G --> U["Usage analytics"]
+  C -->|Add route| H["Add route modal"]
+  H --> I["POST single route"]
+  C -->|Assign| J["Assign tenant modal"]
+  J --> K["Select tenants and assign"]
+  C -->|Replay secret| L["Replay secret modal"]
+  L --> M["Tenant plus raw secret upsert"]
+  C -->|Postman import| N["Postman import wizard"]
+  N --> O["Preview, select, bulk import"]
+  RT --> P["Route docs editor"]
+  P --> Q["Edit documentation"]
 ```
 
 ---
@@ -255,13 +257,13 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[API set View] --> B[Routes table]
-  B --> C[Documentation action]
-  C --> D[Route docs modal]
-  D --> E[Edit request / response docs]
-  D --> F[Optional Postman doc import]
+  A["API set view"] --> B["Routes table"]
+  B --> C["Documentation action"]
+  C --> D["Route docs modal"]
+  D --> E["Edit request and response docs"]
+  D --> F["Optional Postman doc import"]
   E --> G[Save]
-  G --> H[Tenant can View docs]
+  G --> H["Tenant can view docs"]
 ```
 
 ---
@@ -278,13 +280,13 @@ Used when API set has **replay protection On**.
 
 ```mermaid
 flowchart TD
-  A[API set with replay ON] --> B[replay-secret modal]
-  B --> C[Select tenant]
-  C --> D[Generate or paste raw secret]
-  D --> E[Upsert replay secret]
-  E --> F[Copy raw secret once]
-  F --> G[Share with tenant out-of-band]
-  G --> H[Tenant uses in Quick Token]
+  A["API set with replay ON"] --> B["Replay secret modal"]
+  B --> C["Select tenant"]
+  C --> D["Generate or paste raw secret"]
+  D --> E["Upsert replay secret"]
+  E --> F["Copy raw secret once"]
+  F --> G["Share with tenant securely"]
+  G --> H["Tenant uses in Quick Token"]
 ```
 
 ---
@@ -295,16 +297,16 @@ End-to-end chain to onboard a new tenant:
 
 ```mermaid
 flowchart TD
-  A[Login as admin] --> B[Create tenant]
-  B --> C[Create API set]
-  C --> D[Add routes or Postman import]
-  D --> E[Assign API set to tenant]
+  A["Login as admin"] --> B["Create tenant"]
+  B --> C["Create API set"]
+  C --> D["Add routes or Postman import"]
+  D --> E["Assign API set to tenant"]
   E --> F{Replay on?}
-  F -->|Yes| G[Set replay secret for tenant + API set]
-  F -->|No| H[Create tenant token]
+  F -->|Yes| G["Set replay secret"]
+  F -->|No| H["Create tenant token"]
   G --> H
-  H --> I[Optional: usage policy + IP whitelist]
-  I --> J[Give tenant credentials + API key + replay secret if needed]
+  H --> I["Optional policy and IP whitelist"]
+  I --> J["Hand off credentials to tenant"]
 ```
 
 **Step-by-step:**
@@ -331,11 +333,11 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[Open /tenant/login] --> B[Enter credentials]
+  A["Open tenant login"] --> B["Enter credentials"]
   B --> C{Valid?}
-  C -->|Yes| D[Store tenant JWT]
-  D --> E[/tenant/dashboard]
-  C -->|No| F[Show error]
+  C -->|Yes| D["Store tenant JWT"]
+  D --> E["Tenant dashboard"]
+  C -->|No| F["Show error"]
   F --> B
 ```
 
@@ -353,16 +355,16 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[/tenant/dashboard] --> B[Assigned API sets]
+  A["Tenant dashboard"] --> B["Assigned API sets"]
   A --> C[Tokens]
-  A --> D[Usage table]
-  A --> E[IP whitelist]
-  A --> F[Download Postman]
-  A --> G[Quick token]
-  B --> H[View routes modal]
-  H --> I[View docs per route]
-  C --> J[Create token modal]
-  C --> K[Revoke token]
+  A --> D["Usage table"]
+  A --> E["IP whitelist"]
+  A --> F["Download Postman"]
+  A --> G["Quick token"]
+  B --> H["View routes modal"]
+  H --> I["View docs per route"]
+  C --> J["Create token modal"]
+  C --> K["Revoke token"]
 ```
 
 ---
@@ -377,15 +379,15 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[/tenant/dashboard] --> B[Create tenant token]
-  B --> C[Name + scope + optional expiry]
+  A["Tenant dashboard"] --> B["Create tenant token"]
+  B --> C["Name, scope, optional expiry"]
   C --> D[Submit]
-  D --> E[API key shown once]
+  D --> E["API key shown once"]
   E --> F{How to use?}
-  F --> G[Quick Token helper]
-  F --> H[Postman collection]
-  F --> I[Your application]
-  E --> J[Revoke if needed]
+  F --> G["Quick Token helper"]
+  F --> H["Postman collection"]
+  F --> I["Your application"]
+  E --> J["Revoke if needed"]
 ```
 
 *Admin may also create tokens from tenant View; same one-time copy rule applies.*
@@ -401,11 +403,11 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[Assigned API set row] --> B[View routes modal]
+  A["Assigned API set row"] --> B["View routes modal"]
   B --> C{Route has docs?}
-  C -->|Yes| D[View docs modal]
-  D --> E[Read request/response docs]
-  C -->|No| F[Ask admin to add docs]
+  C -->|Yes| D["View docs modal"]
+  D --> E["Read request and response docs"]
+  C -->|No| F["Ask admin to add docs"]
 ```
 
 ---
@@ -425,18 +427,18 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[Open Quick token] --> B[Select API set]
-  B --> C[Paste API key]
-  C --> D[Method + gateway path]
+  A["Open Quick token"] --> B["Select API set"]
+  B --> C["Paste API key"]
+  C --> D["Method and gateway path"]
   D --> E{Replay protection?}
-  E -->|Off| F[Build cURL with X-API-Key + X-Api-Set-Id]
-  E -->|On| G[Enter raw replay secret]
-  G --> H[Generate replay headers]
-  H --> I[Canonical string → HMAC-SHA256]
-  I --> J[cURL + replay headers]
-  F --> K[Copy cURL or Send request]
+  E -->|Off| F["Build cURL with API key headers"]
+  E -->|On| G["Enter raw replay secret"]
+  G --> H["Generate replay headers"]
+  H --> I["HMAC-SHA256 signature"]
+  I --> J["cURL with replay headers"]
+  F --> K["Copy cURL or send request"]
   J --> K
-  K --> L[View status + body]
+  K --> L["View status and body"]
 ```
 
 **Replay header algorithm (client-side):**
@@ -457,16 +459,16 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[IP whitelist section] --> B{Action}
-  B -->|Add global| C[Scope: TENANT_GLOBAL]
-  C --> D[Enter CIDR or IP]
+  A["IP whitelist section"] --> B{Action}
+  B -->|Add global| C["Scope TENANT_GLOBAL"]
+  C --> D["Enter CIDR or IP"]
   D --> E[Save]
-  B -->|Add API set| F[Scope: API_SET]
-  F --> G[Pick API set + CIDR or IP]
+  B -->|Add API set| F["Scope API_SET"]
+  F --> G["Pick API set and CIDR"]
   G --> E
   B -->|Delete| H[Confirm]
-  H --> I[Entry removed]
-  E --> J[Gateway enforces on requests]
+  H --> I["Entry removed"]
+  E --> J["Gateway enforces on requests"]
 ```
 
 ---
@@ -480,11 +482,11 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[Has assigned API sets?] -->|No| B[Button disabled]
-  A -->|Yes| C[Download Postman collection]
-  C --> D[Import into Postman]
-  D --> E[Set baseUrl + apiKey]
-  E --> F[Call /gateway/... endpoints]
+  A["Has assigned API sets?"] -->|No| B["Button disabled"]
+  A -->|Yes| C["Download Postman collection"]
+  C --> D["Import into Postman"]
+  D --> E["Set baseUrl and apiKey"]
+  E --> F["Call gateway endpoints"]
 ```
 
 ---
@@ -493,11 +495,11 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A[Login as tenant] --> B[Create token or use admin-provided key]
-  B --> C[View routes / docs]
-  C --> D[Optional: IP whitelist]
-  D --> E[Quick token or Postman: call gateway]
-  E --> F[Monitor usage on dashboard]
+  A["Login as tenant"] --> B["Obtain API key"]
+  B --> C["View routes and docs"]
+  C --> D["Optional IP whitelist"]
+  D --> E["Test via Quick token or Postman"]
+  E --> F["Monitor usage on dashboard"]
 ```
 
 **Step-by-step:**
