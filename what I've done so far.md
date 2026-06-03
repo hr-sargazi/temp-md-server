@@ -3150,3 +3150,778 @@
 
 - `2026-05-12` `a88d606e` fix(sso): surface ZeePay 503004 and preserve codes for Feign errors  (author: Hamid <hamid@hamsaa.ir>; committer: Hamid <hamid@hamsaa.ir>)
 
+
+---
+
+## Timeline — Day 0 to Present (all repos, chronological)
+
+Unified view of **532 unique commits** (deduplicated by hash across all branches), authored as **Hamid**, sorted **oldest → newest**. Span: **2026-02-23** through **2026-06-03**.
+
+Repos covered: `lira-virtual-card`, `Liravirtualmastercardwebapp`, `neivan-api-gateway`, `neivan-api-gateway-interface`, `ingress-manifest`, `neivan-pay`, `neivan-pay-admin`, `neivan-pay-integrations`, `neivan-production`, `neivan-stageing`, `new-ui`, `observability-stack`, `sunrate-proxy`, `sunrate-proxy-ui`, `sso`.
+
+### At a glance
+
+| Month | Commits | Focus |
+|-------|---------|-------|
+| 2026-02 | 19 | Neivan API Gateway core, admin/tenant APIs, Postgres/Redis |
+| 2026-03 | 101 | Gateway interface (Next.js), Sunrate proxy + UI, new-ui, observability, ingress |
+| 2026-04 | 168 | Lira backend from skeleton → auth, cards, invoices, KYC, pricing, worker |
+| 2026-05 | 222 | Neivan Pay + admin, WooCommerce SDK, staging HAProxy, gateway card APIs, SSO fixes |
+| 2026-06 | 22 | Invoice/delegation UX, KYC channels, merchant integration docs, prod deploy |
+
+### First commit per repository
+
+| Repository | First activity |
+|------------|----------------|
+| `lira-virtual-card` | 2026-04-04 |
+| `Liravirtualmastercardwebapp` | 2026-03-31 |
+| `neivan-api-gateway` | 2026-02-23 |
+| `neivan-api-gateway-interface` | 2026-03-10 |
+| `ingress-manifest` | 2026-05-03 |
+| `neivan-pay` | 2026-04-26 |
+| `neivan-pay-admin` | 2026-04-26 |
+| `neivan-pay-integrations` | 2026-05-21 |
+| `neivan-production` | 2026-05-26 |
+| `neivan-stageing` | 2026-04-14 |
+| `new-ui` | 2026-04-25 |
+| `observability-stack` | 2026-05-04 |
+| `sunrate-proxy` | 2026-02-24 |
+| `sunrate-proxy-ui` | 2026-02-24 |
+| `sso` | 2026-05-12 |
+
+### Month-by-month narrative
+
+#### February 2026 — Gateway foundation
+
+- **19 commits** (3 feature-oriented, 3 fix-oriented)
+- **Repos touched:** `neivan-api-gateway`, `sunrate-proxy`, `sunrate-proxy-ui`
+
+#### March 2026 — Gateway UI, Sunrate proxy, new-ui, ingress
+
+- **101 commits** (49 feature-oriented, 20 fix-oriented)
+- **Repos touched:** `Liravirtualmastercardwebapp`, `neivan-api-gateway`, `neivan-api-gateway-interface`, `sunrate-proxy`, `sunrate-proxy-ui`
+
+#### April 2026 — Lira virtual card backend (Phase 0→1), core product APIs
+
+- **168 commits** (76 feature-oriented, 47 fix-oriented)
+- **Repos touched:** `Liravirtualmastercardwebapp`, `lira-virtual-card`, `neivan-pay`, `neivan-pay-admin`, `neivan-stageing`, `new-ui`, `sunrate-proxy`, `sunrate-proxy-ui`
+
+#### May 2026 — Pay platform, integrations, staging/prod infra, card fulfillment
+
+- **222 commits** (78 feature-oriented, 86 fix-oriented)
+- **Repos touched:** `Liravirtualmastercardwebapp`, `ingress-manifest`, `lira-virtual-card`, `neivan-api-gateway`, `neivan-api-gateway-interface`, `neivan-pay`, `neivan-pay-admin`, `neivan-pay-integrations`, `neivan-production`, `neivan-stageing`, `new-ui`, `observability-stack`, `sso`, `sunrate-proxy`, `sunrate-proxy-ui`
+
+#### June 2026 — Invoicing, KYC config, merchant docs, production polish
+
+- **22 commits** (8 feature-oriented, 9 fix-oriented)
+- **Repos touched:** `Liravirtualmastercardwebapp`, `lira-virtual-card`, `neivan-pay`, `neivan-production`
+
+### Daily timeline (oldest first)
+
+Format: `date` → repo · type · message (`hash`)
+
+Types: **feat** · **fix** · **doc** · **chore** · **merge** · **other**
+
+### February 2026 — Gateway foundation
+
+#### 2026-02-23 (4 commits)
+
+- **neivan-api-gateway** · fix · fix: applies the gitignore (`49aeb18c`)
+- **neivan-api-gateway** · fix · fix: applies the gitignore (`5fec4a36`)
+- **neivan-api-gateway** · other · Stop tracking vendor/; keep deps via go.mod/go.sum (`6c426cab`)
+- **neivan-api-gateway** · chore · chore: creates base project structure (`bfb0e7ae`)
+
+#### 2026-02-24 (10 commits)
+
+- **sunrate-proxy** · other · Go 1.26: bump go.mod and Dockerfile; use 1.22+ method/path routing and PathValue (`410b3cb5`)
+- **sunrate-proxy** · chore · Initial commit: Go proxy for 200cards API with health, USD card routes, API key auth, user-identifier tracking, create-card audit, Postgres/GORM, Docker (`5b651925`)
+- **sunrate-proxy** · other · Bump Go version to 1.24 in go.mod (`b1120bee`)
+- **sunrate-proxy** · feat · Add admin API and CORS: /admin/api-keys, user-identifiers, issued-cards; CORS_ORIGINS in .env (`b4000fc3`)
+- **sunrate-proxy** · other · Go 1.21 routes: path-only patterns + RequireMethod; admin responses camelCase, no KeyHash; bootstrap login non-fatal; CORS on all routes (`b5f755e0`)
+- **sunrate-proxy** · feat · Add bootstrap login debug logging and app restart policy in docker-compose (`f65699b8`)
+- **sunrate-proxy-ui** · other · Migrate from CSS modules to Tailwind CSS (`1c33ab7c`)
+- **sunrate-proxy-ui** · fix · Fix app layout: top navbar in flow, improve UI (`1d7d63ff`)
+- **sunrate-proxy-ui** · other · Admin UI: login with API key, dashboard, floating navbar, API keys, user identifiers, issued cards pages (`5fa39b02`)
+- **sunrate-proxy-ui** · other · Ignore .env in git (`e7765235`)
+
+#### 2026-02-25 (5 commits)
+
+- **neivan-api-gateway** · chore · chore: setups tool-agnostic and clean-architecure basic setups (`2030c373`)
+- **sunrate-proxy** · doc · README: token TTL/renewal/retry, camelCase admin API, config table, run note (`223e0976`)
+- **sunrate-proxy** · other · Parse JWT exp claim for token expiry; fallback to LOGIN_TOKEN_TTL when missing (`40b00d25`)
+- **sunrate-proxy** · feat · Add tests: proxy, auth, config, system handler, repositories (`b1e1ba18`)
+- **sunrate-proxy** · other · Token TTL from env, renewal before expiry, retry login with backoff (`b2c5d1e2`)
+
+### March 2026 — Gateway UI, Sunrate proxy, new-ui, ingress
+
+#### 2026-03-09 (11 commits)
+
+- **neivan-api-gateway** · chore · test: cover infra services, config, and app wiring (`0a54d884`)
+- **neivan-api-gateway** · feat · test: add http delivery tests (`43307c52`)
+- **neivan-api-gateway** · feat · test: add usecase and repository coverage (`4687e892`)
+- **neivan-api-gateway** · feat · feat: pushing all changes (`4e233500`)
+- **neivan-api-gateway** · feat · feat: add gateway logging, metrics, and k8s health (`7ba5c901`)
+- **neivan-api-gateway** · feat · feat: add admin and tenant panel auth and harden gateway security (`91e9219a`)
+- **neivan-api-gateway** · feat · feat: add admin management and seed cli (`ac544b5e`)
+- **neivan-api-gateway** · fix · fix: fixes the /route problem (`d1d6386f`)
+- **neivan-api-gateway** · chore · chore: harden config and security headers (`df98e0bd`)
+- **neivan-api-gateway** · chore · chore: refactors main.go and adds redis health check to health api (`ec962125`)
+- **neivan-api-gateway** · chore · chore: introduce db-agnostic repo factory (`f057d8c5`)
+
+#### 2026-03-10 (21 commits)
+
+- **neivan-api-gateway** · feat · feat: support multi-tenant API set assignment (`0d63ab98`)
+- **neivan-api-gateway** · feat · feat: add migrate CLI and schema migrations for admin username and tenant password (`2c8bf138`)
+- **neivan-api-gateway** · feat · feat: add admin API set route update and delete (`35c2f33d`)
+- **neivan-api-gateway** · feat · feat: generate replay secret route (`3faa6d4d`)
+- **neivan-api-gateway** · feat · feat: add CORS middleware for browser clients (`696ad692`)
+- **neivan-api-gateway** · feat · feat: replay protection requires nonce + timestamp + signature (`93bfb8e0`)
+- **neivan-api-gateway** · fix · docs: add comprehensive README with diagrams and fix Dockerfile build (`a37a36fc`)
+- **neivan-api-gateway** · feat · feat: add admin API set update and delete (`d441afd2`)
+- **neivan-api-gateway** · feat · feat: make API set tenant assignment replace existing mappings (`dde87817`)
+- **neivan-api-gateway** · feat · docs: add API reference and Postman collection (`f1745a58`)
+- **neivan-api-gateway-interface** · feat · feat: update routing and modal behavior (`3133a673`)
+- **neivan-api-gateway-interface** · feat · feat: add initial admin and tenant portals (`3768fd13`)
+- **neivan-api-gateway-interface** · chore · chore: tweak api-set tenant assign modal (`4b996254`)
+- **neivan-api-gateway-interface** · feat · feat: add api-set tenant assignment ui (`4cdbebec`)
+- **neivan-api-gateway-interface** · feat · feat: improve admin tenant modals and list (`6885215e`)
+- **neivan-api-gateway-interface** · feat · feat: add admin tenant creation flow (`6faa0b38`)
+- **neivan-api-gateway-interface** · other · commit all (`b666801c`)
+- **neivan-api-gateway-interface** · chore · chore: use select for route method (`bb7b7003`)
+- **neivan-api-gateway-interface** · other · commit all (`cf1acd39`)
+- **neivan-api-gateway-interface** · feat · feat: add edit/delete api-sets modals (`e6d1780e`)
+- **neivan-api-gateway-interface** · chore · chore: initial Next.js project scaffold (`ebbd118a`)
+
+#### 2026-03-11 (26 commits)
+
+- **neivan-api-gateway** · feat · feat: add route documentation backend and postman preview (`35a9c547`)
+- **neivan-api-gateway** · feat · feat: expose tenant ip whitelist read endpoint (`741f4f0d`)
+- **neivan-api-gateway** · feat · feat: add admin replay revoke and tenant token self-service (`c662b171`)
+- **neivan-api-gateway** · feat · feat: add admin and tenant ip whitelist management (`cbbae0d0`)
+- **neivan-api-gateway** · feat · feat: record and expose client ip in usage (`de4de9d3`)
+- **neivan-api-gateway** · chore · chore: polish tenant routes and gateway cors (`df94069c`)
+- **neivan-api-gateway** · doc · docs: summarize backend storyline features (`f445e7a1`)
+- **neivan-api-gateway-interface** · chore · chore: refresh tenant tokens after changes (`1a8b592d`)
+- **neivan-api-gateway-interface** · feat · feat: add api explorer, admin usage policies, and replay secret revoke (`2c76dceb`)
+- **neivan-api-gateway-interface** · fix · fix: surface backend error messages (`339dec96`)
+- **neivan-api-gateway-interface** · feat · feat: add tenant usage table (`3475fa9b`)
+- **neivan-api-gateway-interface** · fix · fix: correct modal loadin upon page refresh (`44db7d89`)
+- **neivan-api-gateway-interface** · fix · fix: tenant select selection logic and enabled replay-secret submit button (`56c18a63`)
+- **neivan-api-gateway-interface** · feat · feat: add tenant api set routes modal (`70ee54c4`)
+- **neivan-api-gateway-interface** · feat · feat: add usage date filters and docs coverage badges (`75d9ba50`)
+- **neivan-api-gateway-interface** · feat · feat: add admin usage analytics tables (`7d614bd6`)
+- **neivan-api-gateway-interface** · fix · fix: quick token modal refactor (`88838e6d`)
+- **neivan-api-gateway-interface** · chore · chore: improve usage pagination and error ux (`8aacbfcc`)
+- **neivan-api-gateway-interface** · fix · fix: tenant usage filter button syntax (`ab22e5b8`)
+- **neivan-api-gateway-interface** · feat · feat: upgrade quick token modal (`af77ec70`)
+- **neivan-api-gateway-interface** · feat · feat: compute replay signature in quick token (`b9fc1f33`)
+- **neivan-api-gateway-interface** · feat · feat: add admin and tenant ip whitelist management (`bed28246`)
+- **neivan-api-gateway-interface** · feat · feat: add replay secret management (`d7070b2b`)
+- **neivan-api-gateway-interface** · feat · docs: add project-specific readme (`de68b41f`)
+- **neivan-api-gateway-interface** · feat · feat: add route documentation editor and viewer (`e1536ddf`)
+- **neivan-api-gateway-interface** · fix · fix: lock background scroll when modal open (`feee1b61`)
+
+#### 2026-03-12 (6 commits)
+
+- **neivan-api-gateway** · feat · feat: leacky bucket ratelimitng algorithm (`1b5eeb66`)
+- **neivan-api-gateway** · fix · docs: fix rate limiting mermaid diagram (`48712bcb`)
+- **sunrate-proxy** · fix · Fix Mermaid request flow diagram for GitHub (`1d605aef`)
+- **sunrate-proxy** · fix · Fix Mermaid diagram for GitHub rendering (`23861669`)
+- **sunrate-proxy** · doc · Document architecture, PRD, and request flows in README (`926d519d`)
+- **sunrate-proxy** · fix · fix: diagram (`b81a92a8`)
+
+#### 2026-03-13 (2 commits)
+
+- **neivan-api-gateway-interface** · feat · feat: redirect to login on 401 (`eead807b`)
+- **sunrate-proxy** · feat · docs: add Sunrate proxy API docs and Postman collection (`7d4f92fa`)
+
+#### 2026-03-14 (5 commits)
+
+- **neivan-api-gateway** · feat · feat: tenant IP whitelist per API set, API set requirements, composed Postman collection (`aaa238b1`)
+- **neivan-api-gateway** · doc · Update docs and admin API components (`fa2e22b3`)
+- **neivan-api-gateway-interface** · feat · feat: import routes from Postman (admin API set) (`093bb02e`)
+- **neivan-api-gateway-interface** · feat · feat: tenant IP whitelist per API set, client IP in usage, API set requirements, Postman download (`9fa977de`)
+- **sunrate-proxy** · fix · fix: quote Mermaid node labels to fix GitHub render parse error (`50d06236`)
+
+#### 2026-03-15 (7 commits)
+
+- **neivan-api-gateway-interface** · fix · feat: Postman import on create/edit API set; usage policy scope selects; fix usage-policy reload loop (`80b8f383`)
+- **sunrate-proxy** · doc · docs: automation tests – require request-status polling and client_request_id formats for async steps (`1103f028`)
+- **sunrate-proxy** · fix · Add server logging, issued-card storage fixes, and user-identifier upsert (`154d61f7`)
+- **sunrate-proxy** · other · log login response body only on non-2xx status (`557c7af7`)
+- **sunrate-proxy** · fix · fix: allow User-Identifier header in CORS for automation tests (`dbf11c61`)
+- **sunrate-proxy** · fix · fix: PIN routes use card_id/card_pin and card_id/old_pin/new_pin; sanitize payload for jsonb; doc and Postman (`f4beb2a6`)
+- **sunrate-proxy-ui** · fix · Add Automation Tests page and fix API payloads (`f2ec1552`)
+
+#### 2026-03-19 (7 commits)
+
+- **neivan-api-gateway** · chore · chore: updates dockerfile (`1c3b350f`)
+- **neivan-api-gateway** · chore · chore: update dockerfile and compose fil (`85984f3e`)
+- **neivan-api-gateway-interface** · fix · fix: standalone build (`55cfc20a`)
+- **neivan-api-gateway-interface** · chore · chore: docker build (`dba68f40`)
+- **sunrate-proxy** · chore · chore: updates dockerfile (`3cf47fc4`)
+- **sunrate-proxy** · chore · chore: updates compose file (`958a7606`)
+- **sunrate-proxy-ui** · chore · chore: adds dockerfile (`688e59e4`)
+
+#### 2026-03-29 (7 commits)
+
+- **sunrate-proxy** · feat · feat(admin): tenant create, credential sync, and JWT cache invalidation (`1e83d56a`)
+- **sunrate-proxy** · feat · feat(admin): one-time password reveal for tenants (`235f9423`)
+- **sunrate-proxy** · feat · Add 200cards upstream Postman collection reference (`5c693fd5`)
+- **sunrate-proxy** · feat · feat: per-tenant upstream credentials, tenant manager, and tests (`614979eb`)
+- **sunrate-proxy** · doc · Align USD proxy with 200cards; log upstream bodies; automation docs (`78a42913`)
+- **sunrate-proxy-ui** · other · Tenant admin UI: CRUD, soft-delete, one-time password reveal (`5a51bc6f`)
+- **sunrate-proxy-ui** · other · Automation: env User-Identifier, cards/search, purchase quantity; shared proxy URL (`f877670e`)
+
+#### 2026-03-30 (7 commits)
+
+- **sunrate-proxy** · other · salam (`2ab813ae`)
+- **sunrate-proxy** · other · salam22 (`450628dd`)
+- **sunrate-proxy** · other · commit (`4c0fdb09`)
+- **sunrate-proxy** · feat · Add DevOps and maintenance diagrams (`788ebb7f`)
+- **sunrate-proxy** · other · salam 2 (`9a23f202`)
+- **sunrate-proxy** · fix · Fix Mermaid diagram rendering in GitHub rich display (`a2f5c08b`)
+- **sunrate-proxy** · other · check (`b80cd911`)
+
+#### 2026-03-31 (2 commits)
+
+- **Liravirtualmastercardwebapp** · other · Expand blueprint with delivery roadmap, team-based estimates, and scenario timelines. (`4733a8c2`)
+- **Liravirtualmastercardwebapp** · feat · Add backend clean architecture blueprint and baseline gitignore. (`e0dae56d`)
+
+### April 2026 — Lira virtual card backend (Phase 0→1), core product APIs
+
+#### 2026-04-04 (13 commits)
+
+- **lira-virtual-card** · chore · chore: Go 1.26.0 toolchain, Dockerfile (Alpine), Docker Compose (`334ab50d`)
+- **lira-virtual-card** · feat · feat(docker): add PostgreSQL and Redis to compose stack (`35493574`)
+- **lira-virtual-card** · doc · docs: .env.example hints for local DATABASE_URL/REDIS_ADDR (`3c3d53a2`)
+- **lira-virtual-card** · feat · feat: config, Postgres/Redis wiring, GET /v1/ready (`501ae1c2`)
+- **lira-virtual-card** · feat · feat: Phase 0 API contract (Postman) and Go skeleton with GET /v1/health (`58075232`)
+- **lira-virtual-card** · chore · chore: stop tracking vendor/ (keep local copy ignored) (`717e6a00`)
+- **lira-virtual-card** · feat · feat(auth): per-mobile OTP resend cooldown via Redis (`89aa9b4a`)
+- **lira-virtual-card** · feat · feat(auth): B2C /v1/auth/* API, OTP tables, dual-session, rate limits (`99d3d8cd`)
+- **lira-virtual-card** · chore · chore: updates gitignore (`9d4c9c6a`)
+- **lira-virtual-card** · feat · docs: add PRD, technical spec, and canonical database schema (`9d60a7a9`)
+- **lira-virtual-card** · feat · feat(auth): JWT (HS256), migrations, password login, profile (`b2d476a3`)
+- **lira-virtual-card** · feat · feat(phase1): observability, logging, recover, timeouts, CI; close Phase 0 (`be218cae`)
+- **lira-virtual-card** · chore · chore: expand .gitignore for build artifacts and tooling (`e6268b8d`)
+
+#### 2026-04-05 (2 commits)
+
+- **lira-virtual-card** · feat · Add route delivery doc §6.3, Kavenegar SMS and SMTP email OTP (`8b3f17e5`)
+- **lira-virtual-card** · other · Auth send-otp: intent, email lookup, signup email OTP / login SMS (`f4c0dd12`)
+
+#### 2026-04-09 (5 commits)
+
+- **Liravirtualmastercardwebapp** · other · Update lockfile peer dependency metadata. (`3134d075`)
+- **Liravirtualmastercardwebapp** · fix · Fix Persian font loading and RTL font application. (`3ef774c0`)
+- **Liravirtualmastercardwebapp** · other · Disable app mock mode for auth and cards flows. (`7e7f056f`)
+- **Liravirtualmastercardwebapp** · feat · Update asset imports and add project gitignore. (`f9a24b52`)
+- **lira-virtual-card** · feat · feat: log Redis/Postgres startup connectivity state (`792f152d`)
+
+#### 2026-04-10 (4 commits)
+
+- **Liravirtualmastercardwebapp** · feat · Add Docker and Nginx setup for web app deployment. (`2001b2c9`)
+- **Liravirtualmastercardwebapp** · feat · feat(auth): wire login/signup/reset flows to backend and env-configurable API (`4a4bad59`)
+- **Liravirtualmastercardwebapp** · merge · Merge branch 'main' of https://github.com/liracards/Liravirtualmastercardwebapp into develop (`79af6117`)
+- **lira-virtual-card** · feat · feat(auth): add backend-driven device challenge flow and CORS support (`583a1fb7`)
+
+#### 2026-04-11 (13 commits)
+
+- **Liravirtualmastercardwebapp** · merge · Merge branch 'main' into develop (`407b9d31`)
+- **Liravirtualmastercardwebapp** · fix · fix: stop API error page reload loop (/app/*/error) (`44889604`)
+- **Liravirtualmastercardwebapp** · fix · fix(auth): clear session on public login/signup routes (`9fb19808`)
+- **Liravirtualmastercardwebapp** · merge · Merge branch 'main' into develop (`ae705320`)
+- **Liravirtualmastercardwebapp** · other · Dockerfile: use node:alpine and nginx:alpine base images (`b50baa64`)
+- **Liravirtualmastercardwebapp** · merge · Merge branch 'main' into develop (`c237b7b6`)
+- **Liravirtualmastercardwebapp** · feat · Docker and API client: env-aware builds, add image-manager script (`d9b76b97`)
+- **lira-virtual-card** · doc · docs and ops: Postman auth flows, SMTP env examples, compose SMTP passthrough (`4baf2350`)
+- **lira-virtual-card** · feat · feat: app_kv, issuance pricing API, kvcatalog, kvcli (`a1edf502`)
+- **lira-virtual-card** · feat · feat: GET /v1/cards — list user cards from Postgres (`c2018d99`)
+- **lira-virtual-card** · other · Dockerfile: pull builder and runtime images from hub.hamdocker.ir mirrors (`cdb246a3`)
+- **lira-virtual-card** · feat · feat(smtp): submission TLS, optional cleartext auth, and mail headers (`d44acb48`)
+- **lira-virtual-card** · fix · fix(auth): device fingerprint hash, login SQL casts, SMS/Kavenegar docs (`df16f1a6`)
+
+#### 2026-04-12 (2 commits)
+
+- **Liravirtualmastercardwebapp** · merge · Merge branch 'main' into develop (`1acf7e62`)
+- **lira-virtual-card** · feat · feat: invoices and Zibal payment intents API (`7a0e36f1`)
+
+#### 2026-04-13 (10 commits)
+
+- **Liravirtualmastercardwebapp** · fix · fix: render invoice line items in invoice detail (`0214530a`)
+- **Liravirtualmastercardwebapp** · fix · fix(web): dedupe completeCardSetup and align develop (`12f7e03c`)
+- **Liravirtualmastercardwebapp** · merge · Merge branch 'main' into develop (`6a552b73`)
+- **Liravirtualmastercardwebapp** · merge · Merge branch 'main' into develop (`83f48fc8`)
+- **Liravirtualmastercardwebapp** · fix · fix: align buy-card invoice flow with backend contracts (`f17686f3`)
+- **Liravirtualmastercardwebapp** · merge · Merge branch 'main' into develop (`fa88f895`)
+- **lira-virtual-card** · feat · feat: implement async fulfillment worker and expand backend coverage (`97d12362`)
+- **lira-virtual-card** · feat · feat(cards): POST complete-setup to activate pending_setup cards (`b48d7e17`)
+- **lira-virtual-card** · fix · fix: expose payment envs and idempotency header in CORS (`bb9d40d6`)
+- **lira-virtual-card** · feat · feat(cards): create fulfilled cards as pending_setup (`f73ed0f2`)
+
+#### 2026-04-14 (6 commits)
+
+- **neivan-stageing** · fix · Add two-step image sync and fix service image mappings. (`180a72d8`)
+- **neivan-stageing** · other · Set explicit API entrypoint for virtual-card core service. (`228c7ac1`)
+- **neivan-stageing** · other · Keep environment files local and enforce env sync parity. (`53f7b3f2`)
+- **neivan-stageing** · other · Improve HAProxy behind CDN, image sync, and origin logging (`5d5a7ad8`)
+- **neivan-stageing** · other · Initialize secure single-host staging deployment scaffold (`69eae504`)
+- **neivan-stageing** · feat · Add remote sync automation for staging workspace. (`ed66249e`)
+
+#### 2026-04-15 (7 commits)
+
+- **neivan-stageing** · other · updates the virtual card service envs (`4a53afc1`)
+- **neivan-stageing** · fix · fixes 200cards sevice env (`4e48bef0`)
+- **neivan-stageing** · other · updates ha proxy config (`90652728`)
+- **neivan-stageing** · fix · fix 200cardwrapper env example db and server port (`f4058f84`)
+- **sunrate-proxy** · other · proxy over tcp nd ipv4 (`11399ad2`)
+- **sunrate-proxy** · other · Include gen-apikey binary in runtime image (`30d51189`)
+- **sunrate-proxy-ui** · fix · fixes ngixn 404 on refresh page problem (`c723bf9c`)
+
+#### 2026-04-17 (10 commits)
+
+- **Liravirtualmastercardwebapp** · feat · feat(web): load top-up pricing and quotes from backend (`1b8bfb5c`)
+- **Liravirtualmastercardwebapp** · fix · fix(web): self-host Vazirmatn font for offline usage (`41c2afc1`)
+- **Liravirtualmastercardwebapp** · feat · feat(top-up): dynamic pricing/quote API and clearer API errors (`8502861c`)
+- **Liravirtualmastercardwebapp** · fix · fix(top-up): remove live USD/IRR rate line from card header (`8ac3c9d6`)
+- **Liravirtualmastercardwebapp** · fix · fix: navigares to login pag e (`976efc58`)
+- **Liravirtualmastercardwebapp** · feat · feat(topup): crypto invoice USD display, auto-refresh, cards reload after top-up (`f0189c9c`)
+- **lira-virtual-card** · feat · feat(topup): balance credit on fulfillment, invoice metadata in API, result columns (`1199231b`)
+- **lira-virtual-card** · fix · fix(fx): treat Tetherland price as Toman and convert to IRR (Rials) (`59f7a6b1`)
+- **lira-virtual-card** · feat · feat(recharge): add pricing, quote, and rates endpoints (`ce7ca513`)
+- **neivan-stageing** · other · reads images from registry (`544e2c91`)
+
+#### 2026-04-18 (14 commits)
+
+- **Liravirtualmastercardwebapp** · chore · chore: remove GET /exchange-rate client usage (`1691b7ff`)
+- **Liravirtualmastercardwebapp** · feat · feat(packages): load pricing from API and restrict picker to active cards (`33d4169f`)
+- **Liravirtualmastercardwebapp** · fix · fix(signup): clarify terms modal CTA copy in Persian (`67c57b7f`)
+- **Liravirtualmastercardwebapp** · feat · feat: change-password API, transaction packages, and invoices (`67d30c23`)
+- **Liravirtualmastercardwebapp** · feat · feat: buy-card USD/crypto, invoice crypto display, Iran phone validation (`8e7dcec6`)
+- **Liravirtualmastercardwebapp** · feat · feat(kyc): Tier 1 gate, profile OTP, and resilient API loading (`de5dc8ba`)
+- **Liravirtualmastercardwebapp** · feat · feat(packages): payment method selection and live quote on confirm (`dfbf5693`)
+- **Liravirtualmastercardwebapp** · feat · feat(cards): wire My Cards rename and PIN flows to API (`e0aa746b`)
+- **lira-virtual-card** · feat · feat(pricing): transaction packages from KV with GET /transaction-packages/pricing (`391d4a35`)
+- **lira-virtual-card** · feat · feat(cards): issuance pricing methods and quote endpoint (`56db61c1`)
+- **lira-virtual-card** · feat · feat(transaction-packages): payment methods on pricing and POST quote (`5ef8b0ce`)
+- **lira-virtual-card** · feat · feat(kyc): Tier 1 verification, SMS/email OTP, and ops hardening (`6d31f91e`)
+- **lira-virtual-card** · feat · feat(cards): add PUT /cards/{id}/label and POST /cards/{id}/change-pin (`d6f70168`)
+- **lira-virtual-card** · feat · feat: authenticated change-password and transaction-package fulfillment (`f0b927d6`)
+
+#### 2026-04-20 (4 commits)
+
+- **Liravirtualmastercardwebapp** · fix · fix(pwa): enforce network-only service worker and disable HTTP caching (`34d8e3ad`)
+- **lira-virtual-card** · fix · fix(kyc): persist tier1 verification for users missing kyc row (`b51b69e7`)
+- **neivan-stageing** · chore · chore: regitsers niwan.net in haproxy (`34413c76`)
+- **neivan-stageing** · chore · chore: updates virtual card service (`ca53c77c`)
+
+#### 2026-04-25 (23 commits)
+
+- **Liravirtualmastercardwebapp** · fix · fix(invoices-ui): show IRR values and simplify top-up invoice lines (`263853b0`)
+- **Liravirtualmastercardwebapp** · fix · fix: commit (`3ab7b957`)
+- **Liravirtualmastercardwebapp** · fix · fix(otp-ui): unify resend timer to MM:SS countdown (`4967b531`)
+- **Liravirtualmastercardwebapp** · fix · fix(buy-card): remove redundant payment method subtitles (`51efc346`)
+- **Liravirtualmastercardwebapp** · fix · fix: sets default en langaufe (`8f33137b`)
+- **Liravirtualmastercardwebapp** · fix · fix(signup): remove national id step from registration (`98b8ddfc`)
+- **Liravirtualmastercardwebapp** · feat · feat(otp-ui): render resend countdown from backend timing (`b5fee756`)
+- **Liravirtualmastercardwebapp** · fix · fix(cards-ui): use profile maxCards instead of hardcoded cap (`c14cca62`)
+- **Liravirtualmastercardwebapp** · fix · fix(otp-ui): show expiry countdown and isolate resend state (`c68ec553`)
+- **Liravirtualmastercardwebapp** · fix · fix(buy-card): align issuance checkout with IRR and fixed USD quote (`ef388503`)
+- **lira-virtual-card** · fix · fix(kyc): mark signup email verified in tier1 (`1af18d33`)
+- **lira-virtual-card** · feat · feat(cli): add cardlimitcli and document docker compose usage (`549daf2a`)
+- **lira-virtual-card** · feat · feat(otp): include expiry time in sms and email content (`563d5525`)
+- **lira-virtual-card** · fix · fix(packages): return IRR display currency in quote response (`5c39a41e`)
+- **lira-virtual-card** · feat · feat(admin): add admin auth login and admin management cli (`8d077003`)
+- **lira-virtual-card** · fix · fix(auth): remove national id from signup flow (`9eda3535`)
+- **lira-virtual-card** · feat · feat(card-limits): add global and per-user max cards resolution (`c95b23ca`)
+- **lira-virtual-card** · fix · fix(invoices): normalize legacy IRT amounts to IRR in API DTOs (`d7ec27a7`)
+- **lira-virtual-card** · feat · feat(otp): add per-flow ttl config and resend timer metadata (`dbcbefe5`)
+- **lira-virtual-card** · feat · feat(admin): add user, config, kyc, limits and finance admin APIs (`e5be9b94`)
+- **lira-virtual-card** · fix · fix(issuance): return IRR pricing and use configured USD base quote (`fc4c6b57`)
+- **neivan-stageing** · feat · chore: add virtual card admin service and routing (`7ccebe98`)
+- **new-ui** · other · enable email and phone login tabs (`edb166d9`)
+
+#### 2026-04-26 (16 commits)
+
+- **neivan-pay** · feat · Implement token management core with persistent idempotency and TDD coverage. (`2cc7788c`)
+- **neivan-pay** · doc · Initialize neivan-pay baseline docs and runtime assets. (`5d353397`)
+- **neivan-pay** · chore · chore: update and push (`a9effbe4`)
+- **neivan-pay** · other · Bootstrap neivan-pay runtime skeleton and contract artifacts. (`b8f7dacb`)
+- **neivan-pay** · feat · Implement payment intent processing foundation and clean HTTP delivery structure. (`ee2eb9cf`)
+- **neivan-pay-admin** · other · Bootstrap neivan-pay-admin architecture shell and UI foundations. (`51572c33`)
+- **neivan-pay-admin** · feat · feat: dockerfile (`71555d5c`)
+- **neivan-pay-admin** · other · Initialize neivan-pay-admin product and engineering specifications. (`8498f1a5`)
+- **neivan-pay-admin** · other · Improve token issuance UX with selectable scopes and localized feedback. (`869210d1`)
+- **neivan-pay-admin** · chore · Build admin module shell with routed tenant/app/token views and API actions. (`bc0919be`)
+- **neivan-stageing** · feat · chore: add pay service stack to staging (`ef72e1aa`)
+- **new-ui** · fix · fix: signup page revert back to email and phone selection (`379e4ac4`)
+- **new-ui** · other · update gitignore env file rules (`4cf81b19`)
+- **new-ui** · feat · Merge branch 'chore/add-api-base-url-env' into develop (`9da43468`)
+- **new-ui** · feat · Merge branch 'feature/login-email-phone-tabs' into develop (`d23d9500`)
+- **new-ui** · feat · add env files for API base url (`eae11953`)
+
+#### 2026-04-27 (36 commits)
+
+- **neivan-pay** · feat · feat: seed admin auth prerequisites in migrations (`23599b84`)
+- **neivan-pay** · fix · fix: set explicit production server for OpenAPI docs (`30d2807a`)
+- **neivan-pay** · feat · feat: restrict issued app token access to payment flow (`38c3881c`)
+- **neivan-pay** · feat · feat: separate admin auth from app integration tokens (`4b01ffb1`)
+- **neivan-pay** · feat · feat: add in-container migration CLI for core service (`58392fd8`)
+- **neivan-pay** · feat · feat: enrich admin provider health and simplify create payloads (`59c57741`)
+- **neivan-pay** · feat · feat: add admin tenant and app creation endpoints (`5c412670`)
+- **neivan-pay** · fix · fix: switch OpenAPI server host to niwan.net (`7b884d4c`)
+- **neivan-pay** · feat · feat: add webhook operations and subscription management (`7c80ae21`)
+- **neivan-pay** · feat · feat: add multi-admin management and persistent admin auth (`a5e70cc6`)
+- **neivan-pay** · feat · feat: add tenant and app admin CRUD APIs (`ad05895d`)
+- **neivan-pay** · feat · feat: add build metadata and detailed API request logging (`efe97779`)
+- **neivan-pay** · feat · feat: expand pay API auth, reliability, and observability (`fc2b9503`)
+- **neivan-pay-admin** · fix · fix: align admin UI mappings and provider health display (`0d78db62`)
+- **neivan-pay-admin** · fix · fix: use tenant/app selects for webhook subscriptions (`3d74ac4f`)
+- **neivan-pay-admin** · fix · fix: prevent webhook subscriptions page refetch loop (`7387d39b`)
+- **neivan-pay-admin** · feat · feat: add tenant and app CRUD management in admin UI (`884f5542`)
+- **neivan-pay-admin** · feat · feat: add webhook deliveries and subscriptions admin pages (`9b430215`)
+- **neivan-pay-admin** · fix · fix: allows .env file to be in docker build proccess (`9d9e7b98`)
+- **neivan-pay-admin** · feat · feat: show backend build id in admin footer (`9fcc83b9`)
+- **neivan-pay-admin** · feat · feat: clarify issued token usage in admin token UI (`a1287e79`)
+- **neivan-pay-admin** · feat · feat: wire full admin route coverage in panel (`bf6ec6b1`)
+- **neivan-pay-admin** · feat · feat: add admin user management in admin panel (`ecd4a3a4`)
+- **neivan-pay-admin** · feat · feat: add admin auth flow, i18n dates, and payment ops views (`ee4021e9`)
+- **neivan-pay-admin** · feat · feat: migrate admin console auth to X-Admin-Token routes (`ff6f74f8`)
+- **neivan-stageing** · feat · chore: add container-safe log file path to pay env example (`04ca4e26`)
+- **neivan-stageing** · feat · chore: add pay swagger docs service and routing (`29a4eb30`)
+- **neivan-stageing** · chore · chore: sync staging OpenAPI for webhook operations (`2fcf2847`)
+- **neivan-stageing** · fix · fix: adds docs to cors (`32cce136`)
+- **neivan-stageing** · chore · chore: expand pay env example with auth and cors settings (`53b5536a`)
+- **neivan-stageing** · fix · fix: commit (`6d7bd855`)
+- **neivan-stageing** · chore · chore: align staging pay spec with payment-only app token surface (`7ba25c59`)
+- **neivan-stageing** · chore · chore: sync staging pay OpenAPI with CRUD updates (`977f86c1`)
+- **neivan-stageing** · fix · fix: switch pay swagger server host to niwan.net (`9992ab21`)
+- **neivan-stageing** · fix · fix: point pay swagger spec to API host (`ce958a59`)
+- **neivan-stageing** · chore · chore: sync pay OpenAPI contract updates (`e3c15493`)
+
+#### 2026-04-29 (3 commits)
+
+- **new-ui** · fix · fix: send normalized phone fields for login (`39ba4ffd`)
+- **new-ui** · fix · fix: align login mobile field names (`afa9229e`)
+- **new-ui** · fix · fix: enforce required fields and correct signup payload (`f9876a2d`)
+
+### May 2026 — Pay platform, integrations, staging/prod infra, card fulfillment
+
+#### 2026-05-02 (5 commits)
+
+- **new-ui** · fix · fix: handles card number presentation on fa lanugage (`06ca55dd`)
+- **new-ui** · fix · fix: handles card number presentation on fa lanugage (`0b99d2ea`)
+- **new-ui** · fix · fix: revert changes (`bde0b208`)
+- **new-ui** · fix · fix: handles card number presentation on fa lanugage (`c4199e2f`)
+- **new-ui** · fix · fix: display card PAN left-to-right in RTL locales (`fd2a5c8c`)
+
+#### 2026-05-03 (2 commits)
+
+- **ingress-manifest** · feat · Add .gitignore and clarify Git root for haproxy in README (`93038956`)
+- **ingress-manifest** · feat · Add modular HAProxy layouts: assembler, option-a, option-b (`b2384d52`)
+
+#### 2026-05-04 (5 commits)
+
+- **neivan-stageing** · other · haproxy: route api-stg/panel-stg /sunrate to 200cardwrapper with path strip (`6db52801`)
+- **neivan-stageing** · fix · haproxy: route full panel-stg/api-stg host to 200cardwrapper (fix /assets 403) (`7fec8def`)
+- **neivan-stageing** · other · haproxy: 301 /sunrate to /sunrate/ on stg hosts for SPA basename (`9c514352`)
+- **observability-stack** · chore · chore: updates repo (`efc0b9f6`)
+- **sunrate-proxy-ui** · other · Deploy under /sunrate: Vite base, router basename, image push script (`65f8e043`)
+
+#### 2026-05-09 (10 commits)
+
+- **observability-stack** · feat · feat: improve service naming and add log level filtering (`58b8d0ae`)
+- **observability-stack** · fix · fix: align stack logs dashboard with service_name labels (`5943f1b8`)
+- **observability-stack** · fix · fix: add local alloy static labels for dashboard filters (`5d3a469e`)
+- **observability-stack** · feat · feat: add docker-based fleet log management and dashboards (`87d386ff`)
+- **observability-stack** · other · observability: Lira file logs to Loki, fleet files renderer, Grafana multi-tenant (`a13eb8b5`)
+- **observability-stack** · fix · fix: harden dashboard loki selectors for all-values (`b4f57e6d`)
+- **observability-stack** · feat · feat: expand dashboard filters for fleet log exploration (`cdf54622`)
+- **observability-stack** · fix · fix: correct deploy bind mount paths (`d9c07fbc`)
+- **observability-stack** · fix · fix: use custom level variable for dashboard filtering (`f5383aa9`)
+- **observability-stack** · fix · fix: correct alloy static label map syntax (`fca33bff`)
+
+#### 2026-05-10 (2 commits)
+
+- **neivan-stageing** · other · commit (`c0229c99`)
+- **observability-stack** · other · commit (`af41251d`)
+
+#### 2026-05-11 (8 commits)
+
+- **neivan-stageing** · doc · docs(200cardwrapper): CORS_ORIGINS entries must not include URL paths (`13ef3a9e`)
+- **neivan-stageing** · doc · docs(200cardwrapper): clarify CORS_ORIGINS for panel-stg vs api-stg (`15339ace`)
+- **neivan-stageing** · other · commita (`478ce38b`)
+- **sunrate-proxy** · fix · fix(usdcards): sanitize upstream response headers for proxied body (`20a0b95b`)
+- **sunrate-proxy** · feat · chore: add detailed CORS and USD proxy debug logs (`356996ab`)
+- **sunrate-proxy** · fix · fix(cors): do not send mismatched Allow-Origin for unknown browsers (`75776708`)
+- **sunrate-proxy** · fix · fix(proxy): stop forwarding browser headers to 200cards upstream (`844a7d23`)
+- **sunrate-proxy** · fix · fix(cors): apply Allow-Origin on first WriteHeader/Write, not at request start (`f5fef9d1`)
+
+#### 2026-05-12 (6 commits)
+
+- **new-ui** · fix · fix: correct backend url (`d51b1013`)
+- **sso** · fix · fix(sso): surface ZeePay 503004 and preserve codes for Feign errors (`a88d606e`)
+- **sunrate-proxy-ui** · feat · feat(automation): config picker pause, resume paths, and create-card body (`045eade5`)
+- **sunrate-proxy-ui** · fix · fix: commit (`0ef9bc33`)
+- **sunrate-proxy-ui** · fix · fix(automation): cap create-card remark at 32 characters (`56127d3a`)
+- **sunrate-proxy-ui** · fix · fix: update (`fd46186c`)
+
+#### 2026-05-13 (11 commits)
+
+- **neivan-api-gateway** · fix · fix(gateway): append path pattern to exact routes when backend base ends with / (`5fdd889c`)
+- **neivan-api-gateway** · feat · feat(gateway): structured trace logs and optional GATEWAY_DEBUG (`84b99c60`)
+- **neivan-api-gateway** · feat · feat(gateway): prefix route matching, query merge, upstream header controls (`8bab35dc`)
+- **neivan-api-gateway** · feat · feat(routes): optional upstream path mapping for masked gateway paths (`90370d73`)
+- **neivan-api-gateway** · feat · feat(usage): enrich usage API with display names for admin and tenant (`a74bfc24`)
+- **neivan-api-gateway** · fix · fix(admin): normalize Postman prefix paths before validation (`b16d87b4`)
+- **neivan-api-gateway-interface** · fix · fix(usage): map PascalCase API fields and show enriched usage columns (`0a402170`)
+- **neivan-api-gateway-interface** · feat · feat(postman-import): origin path mapping when gateway path differs (`7dea17fb`)
+- **neivan-api-gateway-interface** · fix · fix(tenant-tokens): handle PascalCase create-token API response (`8975fb89`)
+- **neivan-api-gateway-interface** · feat · feat(ui): surface path match type for gateway routes (`aaea8998`)
+- **neivan-api-gateway-interface** · fix · fix(admin): Postman import UX and create flow (`f86df57c`)
+
+#### 2026-05-15 (1 commits)
+
+- **new-ui** · other · Remove activeDatetime and timezone from set-new-password request. (`29c9ea63`)
+
+#### 2026-05-16 (6 commits)
+
+- **Liravirtualmastercardwebapp** · feat · feat(cards): gateway PIN setup UX and fulfillment restart polish (`e3f5b46c`)
+- **lira-virtual-card** · feat · feat(gateway): add Neivan gateway client and gatewayprobe CLI (`49f47e22`)
+- **lira-virtual-card** · fix · feat(fulfillment): gateway issuance, admin restart, and payment path fixes (`56134d6e`)
+- **lira-virtual-card** · chore · docker images (`888bb5e1`)
+- **lira-virtual-card** · feat · feat(cards): wire post-purchase setup and change-pin to gateway PIN APIs (`ca9b3866`)
+- **neivan-api-gateway-interface** · feat · docs: add user journey guide with admin and tenant flow diagrams (`933dd328`)
+
+#### 2026-05-17 (21 commits)
+
+- **Liravirtualmastercardwebapp** · fix · fix(cards): show quota total at least as high as remaining from API (`259774ff`)
+- **Liravirtualmastercardwebapp** · feat · feat(cards): load sensitive card details in modal via backend proxy (`3909eec1`)
+- **Liravirtualmastercardwebapp** · feat · feat(packages): hide fee row and include fee in IRR equivalent on package cards (`53e9bc56`)
+- **Liravirtualmastercardwebapp** · feat · feat(cards): hide block and PIN actions from cards page toolbar (`58116f6f`)
+- **Liravirtualmastercardwebapp** · feat · feat(top-up): hide fees and load min/max from pricing API (`7ec902b8`)
+- **Liravirtualmastercardwebapp** · fix · fix: stop transactions API loop and simplify help support tab (`aafbf5c8`)
+- **Liravirtualmastercardwebapp** · feat · feat(top-up): show IRR amounts and refresh expired quotes on pay (`ab1bc1d9`)
+- **Liravirtualmastercardwebapp** · feat · feat(post-purchase): nickname-only setup activates card without PIN (`eb34e22c`)
+- **Liravirtualmastercardwebapp** · fix · fix(transactions): map API fields for list tabs and refetch on transactions page (`f98522fa`)
+- **lira-virtual-card** · feat · feat(cards): return transactionQuotaRemaining from issuer settlement_counter (`11cceca1`)
+- **lira-virtual-card** · fix · fix(fulfillment): complete transaction packages without request-status poll (`51ce183a`)
+- **lira-virtual-card** · fix · fix(fulfillment): sync transaction quota from issuer settlement_counter (`63b3d8ec`)
+- **lira-virtual-card** · feat · feat(cards): proxy query-card-info for full PAN and CVV on GET /cards/{id} (`8c131b9f`)
+- **lira-virtual-card** · feat · feat(transactions): sync issuer auth/settlements to DB and expose GET /v1/transactions (`8eb12d52`)
+- **lira-virtual-card** · feat · feat(fulfillment): gateway transaction packages via purchase-settlement (`9ee9f503`)
+- **lira-virtual-card** · feat · feat(cards): allow nickname-only post-purchase setup without PIN (`a8a2254b`)
+- **lira-virtual-card** · fix · fix(fulfillment): increment quota on package purchase instead of SET from settlement_counter (`b56e6a0f`)
+- **lira-virtual-card** · feat · feat(fulfillment): gateway card top-up via 200cards API (`bdd70285`)
+- **lira-virtual-card** · fix · fix(cards): sync masked PAN and expiry on list from issuer query-card-info (`edee4796`)
+- **neivan-stageing** · fix · fix: new ipg address (`5150f919`)
+- **neivan-stageing** · feat · feat(haproxy): route ipg.liracards.com to neivan-pay core (`fa741dde`)
+
+#### 2026-05-18 (12 commits)
+
+- **lira-virtual-card** · feat · feat: integrate invoicing with Neivan Pay orchestration (`48f0f096`)
+- **lira-virtual-card** · feat · feat: improve Neivan Pay invoicing integration and HTTP debug logging (`a6a75e34`)
+- **neivan-pay** · fix · fix: list all admin webhook subscriptions across tenants (`16a5358c`)
+- **neivan-pay** · feat · feat: per-app provider routes, IRR→Zibal migration, and payment debug logs (`2d6a86fc`)
+- **neivan-pay** · feat · feat: per-app payment return URL and Zibal browser return handler (`83d27643`)
+- **neivan-pay-admin** · feat · feat: manage per-app provider routes in Pay Admin (`ee740dc4`)
+- **neivan-pay-admin** · feat · feat: configure payment return URL per app in admin (`f19a2ada`)
+- **neivan-stageing** · doc · docs: clarify Pay Zibal and Virtual Cards Neivan Pay staging env examples (`1bac2fbd`)
+- **neivan-stageing** · other · updates envs (`e51b8e87`)
+- **neivan-stageing** · doc · docs: document per-app payment return URL in Pay env example (`f1795d56`)
+- **sso** · fix · fix sand zeepay client profile (`7297b3c4`)
+- **sso** · feat · add structured zeepay call logging (`fd6cfa8c`)
+
+#### 2026-05-19 (11 commits)
+
+- **Liravirtualmastercardwebapp** · feat · feat: Pay checkout discovery with currency and gateway selection (`400641f6`)
+- **lira-virtual-card** · feat · feat: expose Neivan Pay provider discovery on checkout BFF (`520cdfd4`)
+- **neivan-pay** · fix · fix: Trawili parsing, provider persistence, and admin intent listing (`44a1858b`)
+- **neivan-pay** · feat · feat: multi-provider discovery, Trawili adapters, and faster health checks (`c4a24f24`)
+- **neivan-pay** · feat · feat: add payment links with public redeem and polished amount form (`fc0bae05`)
+- **neivan-pay-admin** · fix · feat: add payment links admin UI and fix provider catalog hook (`76a1171d`)
+- **neivan-pay-admin** · feat · feat: catalog-aware provider routes editor and local dev API proxy (`9b78a80e`)
+- **neivan-pay-admin** · feat · feat: improve payment intents list readability in Pay Admin (`eb1f4317`)
+- **new-ui** · feat · chore: add package-lock.json for reproducible npm installs (`cd73a2f5`)
+- **new-ui** · fix · Fix reset password set-new-password request payload. (`ebca1a92`)
+- **sso** · other · Store reset-password Zeepay tokens in Redis and harden set-password flow. (`09c98585`)
+
+#### 2026-05-20 (21 commits)
+
+- **Liravirtualmastercardwebapp** · feat · feat: support staging deploy under /virtual/ path prefix (`84641f29`)
+- **neivan-api-gateway** · feat · docs: add CORS example for panel-stg path-based gateway UI (`46f04e60`)
+- **neivan-api-gateway-interface** · fix · fix: set trailingSlash when basePath is set for path deploy (`4566446a`)
+- **neivan-api-gateway-interface** · chore · chore(docker): use Docker Hub Node base image (`9dec6eb9`)
+- **neivan-api-gateway-interface** · feat · feat: support path-based deploy under /gateway/ (`cff66789`)
+- **neivan-pay** · feat · docs: add staging path examples for CORS and API_PUBLIC_BASE_URL (`834c21a0`)
+- **neivan-pay-admin** · feat · feat: optional Vite base path for Pay Admin path deploy (`0b01f7cc`)
+- **neivan-pay-admin** · chore · chore(docker): use Docker Hub for Node and nginx base images (`54e0de11`)
+- **neivan-pay-admin** · fix · fix(build): ship path-deploy Vite env via .env.production in Docker (`b6674f02`)
+- **neivan-stageing** · feat · feat(haproxy): route docs-stg.niwan.net to Pay Swagger UI (`336d0e0c`)
+- **neivan-stageing** · feat · feat(haproxy): route Neivan Pay on /pay/ stg paths (`46c5050b`)
+- **neivan-stageing** · feat · feat(haproxy): route Lira virtual card on /virtual/ stg paths (`48f2ccb1`)
+- **neivan-stageing** · doc · docs(pay): align staging .env.example with path deploy and CORS (`4f8ae807`)
+- **neivan-stageing** · feat · feat(haproxy): route Neivan API Gateway on /gateway/ stg paths (`7ae07dba`)
+- **neivan-stageing** · doc · docs: clarify Pay Admin uses VITE_APP_BASE_PATH for /pay/ builds (`7e385935`)
+- **neivan-stageing** · fix · fix (`859f6fdd`)
+- **neivan-stageing** · fix · fix(haproxy): avoid /gateway redirect loop with Next basePath (`90e8a581`)
+- **neivan-stageing** · fix · fix(haproxy): serve Pay Swagger at docs-stg.niwan.net/pay/ (`972b544e`)
+- **neivan-stageing** · fix · fix(staging): serve Sunrate admin UI on admin-stg /sunrate/ (`c97f606c`)
+- **neivan-stageing** · fix · fix(haproxy): keep /gateway prefix for Next.js panel on panel-stg (`febb0f86`)
+- **new-ui** · chore · chore(git): ignore .env and release tarballs (`08c54056`)
+
+#### 2026-05-21 (21 commits)
+
+- **Liravirtualmastercardwebapp** · feat · feat: payment delegation UI, payer routes, and invoice management (`85fe2168`)
+- **lira-virtual-card** · feat · feat: add payment delegation, payer auth, and contact payer linking (`fd756926`)
+- **neivan-pay-integrations** · fix · fix(woocommerce): register Neivan Pay for Blocks checkout (`0b520e47`)
+- **neivan-pay-integrations** · fix · fix(woocommerce): <your message> (`41dc26a1`)
+- **neivan-pay-integrations** · chore · chore: initial monorepo layout and SEP reference samples (`66e08ef2`)
+- **neivan-pay-integrations** · doc · docs: adopt supported PHP, WordPress, WooCommerce, and Joomla versions (`6d0889b6`)
+- **neivan-pay-integrations** · feat · feat: add PHP merchant SDK and WooCommerce gateway with discovery (`8dcdd076`)
+- **neivan-pay-integrations** · feat · docs: add implementation rules, testing policy, and engineering standards (`b8ab23cd`)
+- **neivan-pay-integrations** · feat · docs: add implementation plan with discovery in WooCommerce v1 (`bc035781`)
+- **neivan-stageing** · chore · chore(wc-shop): refresh vendored Neivan Pay plugin (`1ea536de`)
+- **neivan-stageing** · other · commit (`25ce0f6a`)
+- **neivan-stageing** · fix · fix(wc-shop): keep /wc prefix in WP admin redirects (`3823dd2e`)
+- **neivan-stageing** · fix · fix(wc-shop): stop redirect loop on /wc/wp-admin (`3d9d15f8`)
+- **neivan-stageing** · fix · fix(wc-shop): Neivan Pay available on Blocks Store API checkout (`3dd00e3a`)
+- **neivan-stageing** · fix · fix(wc-shop): stop HAProxy path strip; use Apache Alias /wc (`43054343`)
+- **neivan-stageing** · feat · feat(staging): add WooCommerce shop on panel-stg /wc/ (`57c6aec7`)
+- **neivan-stageing** · fix · fix(wc-shop): join wordpress to internal-shared for DB access (`596fc630`)
+- **neivan-stageing** · fix · fix(wc-shop): WP 6.8, mount plugin on wpcli, harden bootstrap (`804b9487`)
+- **neivan-stageing** · chore · chore(wc-shop): refresh vendored plugin for Blocks checkout (`9882fc07`)
+- **neivan-stageing** · chore · chore(wc-shop): refresh vendored Neivan Pay plugin (`bccd7252`)
+- **neivan-stageing** · fix · fix(wc-shop): trust HTTPS behind CDN (stop SSL redirect loop) (`d47acc33`)
+
+#### 2026-05-23 (1 commits)
+
+- **neivan-pay-integrations** · fix · fix(woocommerce): make gateway available on Blocks Store API checkout (`55e15ec6`)
+
+#### 2026-05-24 (38 commits)
+
+- **Liravirtualmastercardwebapp** · fix · fix: honor /virtual/panel base path for redirects and favicon (`2454619c`)
+- **Liravirtualmastercardwebapp** · other · Update Vite base path for stg.niwan.net/virtual/panel deploy. (`c678b2ff`)
+- **lira-virtual-card** · fix · fix: Neivan Pay return sync and webhook signature diagnostics (`cdc095a2`)
+- **neivan-api-gateway** · feat · feat(routes): allow full route updates for admin API set editing. (`8986cb1d`)
+- **neivan-api-gateway-interface** · feat · feat(admin): pre-populate and edit API set routes in edit modal. (`3af44dda`)
+- **neivan-api-gateway-interface** · fix · fix(admin): prefill and apply default backend URL on API set edit. (`845b635c`)
+- **neivan-api-gateway-interface** · other · Update staging basePath and API URL for stg.niwan.net gateway paths. (`a5d5b91f`)
+- **neivan-pay** · other · all (`04393032`)
+- **neivan-pay** · fix · fix: global admin webhook deliveries and signature debug logging (`52ebae02`)
+- **neivan-pay** · fix · fix: self-host Vazirmatn on Zibal hop page instead of Google Fonts (`c19758d4`)
+- **neivan-pay** · fix · fix: re-sign webhook payloads after JSONB storage round-trip (`ed3a69c3`)
+- **neivan-pay** · feat · feat: improve zibal hop page UX with payment context (`f3d35049`)
+- **neivan-pay-admin** · fix · fix (`c9f71b8c`)
+- **neivan-stageing** · fix · fix: always build absolute Zibal hop URL from WC Pay API base (`24f809cf`)
+- **neivan-stageing** · fix · fix: escape WORDPRESS_CONFIG_EXTRA so compose does not strip PHP vars (`2d224088`)
+- **neivan-stageing** · doc · docs: document Neivan Pay webhook secret and debug env vars (`3ca2ea2d`)
+- **neivan-stageing** · fix · fix: add WC browser return endpoint and Pay app setup docs (`4078e066`)
+- **neivan-stageing** · feat · Add HTTPS for Pay API on ipg-stg.liracards.com (ACME / Let's Encrypt). (`457e9040`)
+- **neivan-stageing** · other · Rename Pay API host from ipg-stg to pgm.liracards.com. (`487409d5`)
+- **neivan-stageing** · fix · fix: WC Pay checkout retries, URL migration, and clearer errors (`59694cdc`)
+- **neivan-stageing** · other · Route pgm.liracards.com by path for Pay API and admin. (`5d2bc509`)
+- **neivan-stageing** · other · Rename Pay API host from ipg-stg to pgm.liracards.com. (`5ddf806f`)
+- **neivan-stageing** · fix · fix: stop infinite redirect loop on failed Pay browser return (`6be35972`)
+- **neivan-stageing** · fix · fix: send Zibal hop redirects to configured Pay API host (`7192b905`)
+- **neivan-stageing** · fix · fix: redirect legacy panel paths and favicon on stg.niwan.net (`804165c9`)
+- **neivan-stageing** · other · Migrate staging to stg.niwan.net path routing and simplify HAProxy. (`97aef035`)
+- **neivan-stageing** · fix · fix: harden WC Zibal redirects and add opt-in debug logging (`9d3f8112`)
+- **neivan-stageing** · other · Use pgm.liracards.com for dedicated Pay API host ACL on main. (`a0329609`)
+- **neivan-stageing** · fix · fix: use Apache-safe WC return and webhook URLs under /wc alias (`a81ca045`)
+- **neivan-stageing** · feat · Add HTTPS for Pay API on ipg-stg.liracards.com (self-signed). (`a9c9b498`)
+- **neivan-stageing** · fix · fix: prefer Pay hop URL over misconfigured WC API base (`b07d572a`)
+- **neivan-stageing** · feat · Merge feat/pay-pgm-https-selfsigned: Pay API HTTPS on pgm.liracards.com. (`ba9fa6e9`)
+- **neivan-stageing** · other · all (`bf57e3b2`)
+- **neivan-stageing** · fix · fix: stop mu-plugin rewriting Pay API redirect URLs to /wc/ (`d1eeb14d`)
+- **neivan-stageing** · other · Document pgm HTTPS deploy without make on staging servers. (`d2735c67`)
+- **neivan-stageing** · doc · Expose Pay Swagger UI at pgm.liracards.com/docs/. (`edb45e94`)
+- **neivan-stageing** · fix · fix: send cancelled Pay returns to order pay page, not thank-you (`f899124f`)
+- **sunrate-proxy-ui** · other · Update Vite base path for stg.niwan.net/sunrate/admin-panel deploy. (`3ee1f2b5`)
+
+#### 2026-05-25 (6 commits)
+
+- **neivan-pay** · feat · feat: Zibal browser return page and safer retry flows (`50ab62b3`)
+- **neivan-pay** · feat · feat: polish Zibal return UX and auto-redirect on failure (`c89b451c`)
+- **neivan-stageing** · fix · fix(wc-shop): simplify Pay Admin URLs in gateway settings (`89184642`)
+- **neivan-stageing** · other · sakam (`8e0a4e91`)
+- **neivan-stageing** · feat · feat(wc-shop): improve Neivan Pay receipt UI and add Persian i18n (`a10fb008`)
+- **neivan-stageing** · fix · fix(wc-shop): load Neivan Pay translations from site language on storefront (`f7b07eae`)
+
+#### 2026-05-26 (15 commits)
+
+- **Liravirtualmastercardwebapp** · other · salam (`0a360889`)
+- **Liravirtualmastercardwebapp** · feat · Add imageManager.sh for stage/prod Docker builds. (`27137953`)
+- **lira-virtual-card** · other · salam (`1057c821`)
+- **lira-virtual-card** · feat · Add imageManager.sh for stage/prod image publish. (`6192f7fd`)
+- **neivan-api-gateway** · feat · Add imageManager.sh for stage/prod API image publish. (`556f6f2c`)
+- **neivan-api-gateway-interface** · feat · Add imageManager.sh for stage/prod Next.js Docker builds. (`e0138e11`)
+- **neivan-pay** · feat · Add imageManager.sh for core and swagger images. (`0c659dc9`)
+- **neivan-pay-admin** · fix · Fix prod admin base path for respect.plus and harden Docker builds. (`61adc80e`)
+- **neivan-pay-integrations** · other · salam (`27449036`)
+- **neivan-production** · other · Configure production for respect.plus behind Cloudflare. (`32e5dbe0`)
+- **neivan-production** · other · Initial production deployment layout from staging. (`e65baaf2`)
+- **neivan-stageing** · other · commit (`515ab9ff`)
+- **neivan-stageing** · other · sss' (`a4bc5fe1`)
+- **sunrate-proxy** · feat · Add imageManager.sh for stage/prod surate-proxy images. (`ff93cb6f`)
+- **sunrate-proxy-ui** · feat · Add imageManager.sh for stage/prod admin UI builds. (`f692b868`)
+
+#### 2026-05-30 (11 commits)
+
+- **Liravirtualmastercardwebapp** · other · rebranding (`24c4aabb`)
+- **neivan-production** · other · update (`b0a60060`)
+- **neivan-production** · other · commit (`e7fd2fd6`)
+- **neivan-stageing** · fix · Fix HAProxy gateway/wrapper routing after container rename. (`1110ebf8`)
+- **neivan-stageing** · other · all (`42c0879d`)
+- **neivan-stageing** · fix · Fix staging/prod gateway stacks clobbering each other in Compose. (`78f5bd0f`)
+- **neivan-stageing** · fix · Fix WooCommerce redirect to use Zibal hop only for Zibal payments. (`8b0d3e1b`)
+- **neivan-stageing** · fix · Fix db-copy-stg-to-prod corrupt dumps and pg_restore exit 139. (`9b4ce0e8`)
+- **neivan-stageing** · other · Set X-Forwarded-Proto on prod sunrate backends unconditionally. (`ad51da91`)
+- **neivan-stageing** · feat · Add prod infrastructure and dual-host HAProxy routing for gateway and wrapper. (`bb23b555`)
+- **neivan-stageing** · fix · Fix gateway/sunrate routing when only prod containers run. (`c5b81b2c`)
+
+#### 2026-05-31 (9 commits)
+
+- **Liravirtualmastercardwebapp** · other · commit (`6815fae2`)
+- **Liravirtualmastercardwebapp** · other · commit (`e56cecc3`)
+- **neivan-pay** · fix · fix(worker): remove unused net/http import (`437cd028`)
+- **neivan-pay** · feat · feat(admin): paginate payment intents and improve provider health checks (`64134c5b`)
+- **neivan-pay-admin** · feat · feat: paginate payment intents list and refresh provider health UI (`2803c293`)
+- **neivan-pay-admin** · other · commit (`6d38712f`)
+- **neivan-pay-integrations** · fix · fix(sdk): normalize money amounts and decode API envelopes safely (`ad6b9259`)
+- **neivan-stageing** · other · commit (`55865884`)
+- **neivan-stageing** · other · salam (`e2b14d5c`)
+
+### June 2026 — Invoicing, KYC config, merchant docs, production polish
+
+#### 2026-06-01 (4 commits)
+
+- **Liravirtualmastercardwebapp** · feat · feat(kyc): respect server Tier 1 requiredChannels in profile UI (`b488e1b3`)
+- **Liravirtualmastercardwebapp** · feat · feat(auth): default phone country to United States (+1) on login and signup (`bb2d3c36`)
+- **lira-virtual-card** · feat · feat(kyc): make Tier 1 required channels configurable via app_kv (`b218b716`)
+- **lira-virtual-card** · fix · fix(kyc): do not re-require channels already verified after policy bump (`b336eafb`)
+
+#### 2026-06-02 (16 commits)
+
+- **Liravirtualmastercardwebapp** · other · refine(invoice-ux): simplify status language and remove technical labels (`04a81f33`)
+- **Liravirtualmastercardwebapp** · fix · fix(card-cap-ui): hide buy-card entry and block checkout at limit (`3fb4826c`)
+- **Liravirtualmastercardwebapp** · other · perf(invoices): consume assignment data from list payload (`4071de8d`)
+- **Liravirtualmastercardwebapp** · other · alll (`89149fc3`)
+- **Liravirtualmastercardwebapp** · fix · fix(invoice): allow retry flow when canPay is only root-level (`a9ad5574`)
+- **Liravirtualmastercardwebapp** · fix · fix(onboarding): route no-card users to status-aware destinations (`b3b210f9`)
+- **Liravirtualmastercardwebapp** · fix · fix(onboarding-nav): prevent buy-card redirect loop on manual entry (`b4a66408`)
+- **Liravirtualmastercardwebapp** · fix · fix: redirect no-card users to active invoice fulfillment (`dc99aa55`)
+- **lira-virtual-card** · fix · fix(card-cap): count active card-purchase requests as used slots (`1bb1b2c0`)
+- **lira-virtual-card** · fix · fix(card-cap): exclude open invoices from slot ceiling (`4a7ba4cd`)
+- **lira-virtual-card** · feat · feat(invoices): embed assignment summary in list response (`a8d1a1ae`)
+- **lira-virtual-card** · feat · feat(onboarding): provide invoice entrypoint for no-card users (`e202966f`)
+- **neivan-pay** · fix · airwallex fix (`29e6ed2f`)
+- **neivan-pay** · other · salam (`5a1ee50e`)
+- **neivan-pay** · feat · docs: add merchant integration walkthrough (`970f252f`)
+- **neivan-production** · other · ssalam (`c92d9556`)
+
+#### 2026-06-03 (2 commits)
+
+- **Liravirtualmastercardwebapp** · feat · feat(auth): reset password flow uses email with dual-channel OTP copy (`bb9c053d`)
+- **lira-virtual-card** · feat · feat(auth): email-based reset password with SMS and email OTP (`d95a1fa2`)
